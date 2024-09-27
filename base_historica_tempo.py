@@ -22,6 +22,7 @@ for year in range(five_years_ago.year, today.year + 1):
         
 df = pd.DataFrame(weather_data)
 
+# abaixo, apenas perfumaria
 rename_dict = {
     'datetime': 'Data',
     'ts': 'Timestamp',
