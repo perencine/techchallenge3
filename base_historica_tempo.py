@@ -24,9 +24,10 @@ for year in range(five_years_ago.year, today.year + 1):
         print(f"Erro: {response.status_code}")
         
 df = pd.DataFrame(weather_data)
+df.to_csv("weather.csv", index=False)
 
-# abaixo, apenas perfumaria
-rename_dict = {
+# abaixo, apenas para informação
+nomes_colunas = {
     'datetime': 'Data',
     'ts': 'Timestamp',
     'revision_status': 'Status Revisao',
@@ -63,7 +64,3 @@ rename_dict = {
     'max_dhi': 'Irradiacao Solar Difusa Max (W/m²)',
     'max_uv': 'Indice UV Max'
 }
-
-df.rename(columns=rename_dict, inplace=True)
-print(df.head())
-df.to_csv("weather.csv", index=False)
