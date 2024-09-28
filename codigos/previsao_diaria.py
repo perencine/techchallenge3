@@ -17,8 +17,8 @@ for tentativas in range(3):
         data = response.json()
         new_line = {}
         for key, vlr in data['data'][0].items():
-            if key == 'datetime': vlr = datetime.strptime(vlr, "%Y-%m-%d:%H").strftime("%Y-%m-%d")
-            if key in cols_interesse: new_line[key] = vlr
+            if key in cols_interesse:
+                new_line[key] = vlr
         if len(cols_interesse) == len(new_line):  # se veio todos os campos da lista cols_interesse, sucesso
             df_weather = pd.read_csv(arquivo)
             nova_condicao = pd.DataFrame([new_line])
