@@ -7,7 +7,7 @@ api_key = "54f03b5db6154b6fb5fb7fbed66772c6"
 lat = "-23.68"
 lon = "46.46"
 url = f"https://api.weatherbit.io/v2.0/current?lat={lat}&lon={lon}&key={api_key}"
-cols_interesse = ['clouds', 'datetime', 'dewpt', 'dhi', 'dni', 'ghi', 'precip', 'pres', 'rh', 'slp', 'solar_rad', 'temp', 'ts', 'wind_dir', 'wind_spd']
+cols_interesse = ['clouds', 'dewpt', 'dhi', 'dni', 'ghi', 'precip', 'pres', 'rh', 'slp', 'solar_rad', 'temp', 'wind_dir', 'wind_spd']
 arquivo = 'tehcchallenge3/arquivos/weather - reducao colunas.csv'
 
 # três tentativas de contato com a API
