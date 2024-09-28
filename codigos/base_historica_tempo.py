@@ -24,7 +24,7 @@ for year in range(five_years_ago.year, today.year + 1):
         print(f"Erro: {response.status_code}")
         
 df = pd.DataFrame(weather_data)
-df.to_csv("weather.csv", index=False)
+df.to_csv("techchallenge/arquivos/weather_completo.csv", index=False)
 
 # abaixo, apenas para informação
 nomes_colunas = {
