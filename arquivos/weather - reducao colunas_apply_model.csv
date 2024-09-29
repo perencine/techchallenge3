@@ -1,2 +1,2 @@
-clouds,dewpt,dhi,dni,ghi,precip,pres,rh,slp,solar_rad,temp,wind_dir,wind_spd
-0,14.6,0,0,0,0,898,84,1036,0,17.5,71,1.4
+clouds,datetime,dewpt,dhi,dni,ghi,precip,pres,rh,slp,solar_rad,temp,ts,wind_dir,wind_spd
+0,2024-09-29:00,14.6,0,0,0,0,898,84,1036,0,17.5,1727569886,71,1.4
