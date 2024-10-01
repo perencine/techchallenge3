@@ -2,13 +2,13 @@ import requests
 import pandas as pd
 from datetime import datetime, timedelta
 
-# Parâmetros de API
-api_key = "54f03b5db6154b6fb5fb7fbed66772c6"
+api_key = "54f03b5db6154b6fb5fb7fbed66772c6" # Adquirida no site da API WeatherBit
 lat = "-23.68"
-lon = "46.46"
+lon = "46.46"  # Parâmetros de localização arbitrários
 today = datetime.now()
-five_years_ago = today - timedelta(days=5*365)
+five_years_ago = today - timedelta(days=5*365)  # coletaremos dados de 5 anos
 weather_data = []
+arquivo = 'weather_completo.csv'
 
 for year in range(five_years_ago.year, today.year + 1):
     start_date = f"{year}-01-01"
@@ -24,4 +24,4 @@ for year in range(five_years_ago.year, today.year + 1):
         print(f"Erro: {response.status_code}")
         
 df = pd.DataFrame(weather_data)
-df.to_csv("techchallenge/arquivos/weather_completo.csv", index=False)
+df.to_csv(arquivo, index=False)
