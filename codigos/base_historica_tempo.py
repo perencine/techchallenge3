@@ -25,3 +25,6 @@ for year in range(five_years_ago.year, today.year + 1):
         
 df = pd.DataFrame(weather_data)
 df.to_csv(arquivo, index=False)
+
+df_cols_interesse = df[['clouds', 'datetime', 'dewpt', 'dhi', 'dni', 'ghi', 'precip', 'pres', 'rh', 'slp', 'solar_rad', 'temp', 'ts', 'wind_dir', 'wind_spd']]
+df.to_csv(arquivo[:-4]+'_reducao_colunas.csv', index=False)
