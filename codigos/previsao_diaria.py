@@ -2,9 +2,9 @@ import requests, time, boto3
 import pandas as pd
 from botocore.exceptions import NoCredentialsError
 
-api_key = "54f03b5db6154b6fb5fb7fbed66772c6"
+api_key = "54f03b5db6154b6fb5fb7fbed66772c6"  # Adquirida no site da API WeatherBit
 lat = "-23.68"
-lon = "46.46"
+lon = "46.46"  # Parâmetros de localização arbitrários
 url = f"https://api.weatherbit.io/v2.0/current?lat={lat}&lon={lon}&key={api_key}"
 cols_interesse = ['clouds', 'datetime', 'dewpt', 'dhi', 'dni', 'ghi', 'precip', 'pres', 'rh', 'slp', 'solar_rad', 'temp', 'ts', 'wind_dir', 'wind_spd']
 arquivo = 'weather_reducao_colunas.csv'
@@ -55,15 +55,13 @@ if handle_s3(arquivo, 'weather-data-techchallenge3', 'download', path_s3_downloa
                 if key in cols_interesse:
                     if key == 'datetime': vlr = vlr[:10]
                     new_line[key] = vlr
-            if len(cols_interesse) == len(new_line):  # se veio todos os campos da lista cols_interesse, sucesso
+            if len(cols_interesse) == len(new_line):  # se veio todos os campos da lista cols_interesse, poderemos inserir a nova linha
                 df_weather = pd.read_csv(arquivo)
                 nova_condicao = pd.DataFrame([new_line])
                 df_weather = pd.concat([df_weather, nova_condicao], ignore_index=True)
                 df_weather.to_csv(arquivo, index=False)
                 print('Inserção de informações concluída com sucesso')
                 if handle_s3(arquivo, 'weather-data-techchallenge3', 'upload'): print('Upload do arquivo completo ao S3 bem-sucedido')
-                #nova_condicao.to_csv(arquivo[:-4] + '_apply_model.csv', index=False)
-                #if handle_s3(arquivo[:-4] + '_apply_model.csv', 'weather-data-techchallenge3', 'upload'): print('Upload do arquivo para se aplicar o modelo ao S3 bem-sucedido')
                 break
         else: print('Erro ao obter informações da API.')
         if tentativas == 2: print('Não tentarei novamente')
